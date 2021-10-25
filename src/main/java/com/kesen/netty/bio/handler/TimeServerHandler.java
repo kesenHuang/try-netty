@@ -15,10 +15,10 @@ import java.net.Socket;
  * @Version 1.0
  **/
 public class TimeServerHandler implements Runnable {
-    private Socket serverSocket;
+    private Socket socket;
 
-    public TimeServerHandler(Socket serverSocket) {
-        this.serverSocket = serverSocket;
+    public TimeServerHandler(Socket socket) {
+        this.socket = socket;
     }
 
     /*
@@ -32,8 +32,8 @@ public class TimeServerHandler implements Runnable {
         PrintWriter out = null;
         try {
             in = new BufferedReader(new InputStreamReader(
-                    this.serverSocket.getInputStream()));
-            out = new PrintWriter(this.serverSocket.getOutputStream(), true);
+                    this.socket.getInputStream()));
+            out = new PrintWriter(this.socket.getOutputStream(), true);
             String currentTime;
             String body;
             // 按行获取
@@ -63,13 +63,13 @@ public class TimeServerHandler implements Runnable {
                 out.close();
                 out = null;
             }
-            if (this.serverSocket != null) {
+            if (this.socket != null) {
                 try {
-                    this.serverSocket.close();
+                    this.socket.close();
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-                this.serverSocket = null;
+                this.socket = null;
             }
         }
     }

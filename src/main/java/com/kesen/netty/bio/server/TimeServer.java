@@ -54,9 +54,10 @@ public class TimeServer {
             Socket socket;
             while (true) {
                 socket = server.accept();
-                // 线程池执行
-                executorService.execute(new TimeServerHandler(socket));
-                //new Thread(new TimeServerHandler(socket)).start();
+                //executorService.execute(new TimeServerHandler(socket));
+
+                // 每个客户端
+                new Thread(new TimeServerHandler(socket)).start();
             }
         } finally {
             if (server != null) {
