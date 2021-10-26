@@ -31,6 +31,6 @@ public class Client {
             // 所以，我们重复调用write()直到Buffer没有要写的字节为止。
             socketChannel.write(buf);
         }
-        Thread.sleep(10000);
+        socketChannel.close();
     }
 }

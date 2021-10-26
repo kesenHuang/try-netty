@@ -34,6 +34,7 @@ public class Server {
                     try {
                         if ((length = socketChannel.read(byteBuffer)) == -1) break;
                     } catch (IOException e) {
+                        e.printStackTrace();
                         break;
                     }
                     byteBuffer.flip();
