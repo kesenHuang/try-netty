@@ -1,6 +1,6 @@
-package com.kesen.netty.bio.server;
+package com.kesen.io.bio.server;
 
-import com.kesen.netty.bio.handler.TimeServerHandler;
+import com.kesen.io.bio.handler.TimeServerHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;

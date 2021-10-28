@@ -1,4 +1,4 @@
-package com.kesen.netty.bio.handler;
+package com.kesen.io.bio.handler;
 
 import java.io.BufferedReader;
 import java.io.IOException;

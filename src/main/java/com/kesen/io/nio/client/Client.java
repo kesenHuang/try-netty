@@ -1,4 +1,4 @@
-package com.kesen.netty.nio.client;
+package com.kesen.io.nio.client;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

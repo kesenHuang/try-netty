@@ -1,4 +1,4 @@
-package com.kesen.netty.nio.client;
+package com.kesen.io.nio.client;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -74,12 +74,13 @@ public class TimeClientHandle implements Runnable {
         }
 
         // 多路复用器关闭后，所有注册在上面的Channel和Pipe等资源都会被自动去注册并关闭，所以不需要重复释放资源
-        if (selector != null)
+        if (selector != null) {
             try {
                 selector.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
 
     }
 
@@ -93,8 +94,9 @@ public class TimeClientHandle implements Runnable {
                 if (sc.finishConnect()) {
                     sc.register(selector, SelectionKey.OP_READ);
                     doWrite(sc);
-                } else
+                } else {
                     System.exit(1);// 连接失败，进程退出
+                }
             }
             if (key.isReadable()) {
                 ByteBuffer readBuffer = ByteBuffer.allocate(1024);

@@ -1,4 +1,4 @@
-package com.kesen.netty.nio.client;
+package com.kesen.io.nio.client;
 
 /**
  * @className: com.kesen.netty.nio.client-> TimeClient
