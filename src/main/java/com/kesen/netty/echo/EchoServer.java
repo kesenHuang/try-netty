@@ -41,6 +41,7 @@ public class EchoServer {
 
         try {
             ServerBootstrap b = new ServerBootstrap();
+            //设置线程组
             b.group(group)
                     //指定所使用的 NIO 传输 Channel
                     .channel(NioServerSocketChannel.class)
@@ -59,7 +60,11 @@ public class EchoServer {
                         }
                     });
 
+            //启动客户端去连接服务器端
+
+            //关于 ChannelFuture 要分析，涉及到netty的异步模型
             ChannelFuture f = b.bind().sync();
+            //给关闭通道进行监听
             f.channel().closeFuture().sync();
         } finally {
             group.shutdownGracefully(). sync();

@@ -18,12 +18,15 @@ import io.netty.util.CharsetUtil;
 @ChannelHandler.Sharable
 public class EchoClientHandler extends SimpleChannelInboundHandler {
 
+
+    //当通道就绪就会触发该方法
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         ctx.writeAndFlush(Unpooled.copiedBuffer("Netty rocks!",
                 CharsetUtil.UTF_8));
     }
 
+    //当通道有读取事件时，会触发
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf in = (ByteBuf) msg;

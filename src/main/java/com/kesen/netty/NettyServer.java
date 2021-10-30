@@ -5,6 +5,7 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.sctp.nio.NioSctpServerChannel;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
  * @program: try-netty
@@ -33,7 +34,7 @@ public class NettyServer {
             ServerBootstrap bootstrap = new ServerBootstrap();
 
             bootstrap.group(bossGroup, workerGroup)
-                    .channel(NioSctpServerChannel.class)
+                    .channel(NioServerSocketChannel.class)
                     // 设置线程队列得到连接个数
                     .option(ChannelOption.SO_BACKLOG, 128)
                     //设置保持活动连接状态
@@ -57,7 +58,6 @@ public class NettyServer {
             ChannelFuture cf = bootstrap.bind(6668).sync();
 
             //给cf 注册监听器，监控我们关心的事件
-
             cf.addListener(new ChannelFutureListener() {
                 @Override
                 public void operationComplete(ChannelFuture future) throws Exception {
