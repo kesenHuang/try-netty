@@ -38,6 +38,7 @@ public class Server {
                         break;
                     }
                     byteBuffer.flip();
+
                     System.out.println("length:" + length);
                     while (byteBuffer.hasRemaining()) {
                         System.out.print((char) byteBuffer.get());
